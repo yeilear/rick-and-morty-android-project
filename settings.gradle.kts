@@ -25,3 +25,4 @@ dependencyResolutionManagement {
 rootProject.name = "rick-and-morty"
 include(":app")
 include(":core")
+include(":home")
