@@ -1,4 +1,4 @@
-package com.yeison.rick_and_morty.ui.theme
+package com.yeison.core.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
