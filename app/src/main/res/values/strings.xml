@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">rick-and-morty</string>
+    <string name="app_name">Rick y Morty</string>
+    <string name="splash_title">Rick y Morty</string>
 </resources>
