@@ -1,13 +1,14 @@
 package com.yeison.rick_and_morty.ui.screens
 
-import androidx.lifecycle.viewModelScope
 import com.yeison.core.base.BaseViewModel
 import com.yeison.core.navigation.Routes
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+
+private const val DELAY = 2000L
 
 @HiltViewModel
 class SplashViewModel @Inject constructor() : BaseViewModel() {
@@ -16,8 +17,7 @@ class SplashViewModel @Inject constructor() : BaseViewModel() {
     val destination = _destination.asStateFlow()
 
     fun onTimeout() = execute {
-        viewModelScope.launch {
-            _destination.value = Routes.Home.route
-        }
+        delay(DELAY)
+        _destination.value = Routes.Home.route
     }
 }

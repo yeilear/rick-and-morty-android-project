@@ -4,6 +4,7 @@ import com.yeison.core.navigation.Routes
 import com.yeison.rick_and_morty.TestCoroutineRule
 import com.yeison.rick_and_morty.TestDispatcherProvider
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.delay
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
@@ -29,6 +30,8 @@ class SplashViewModelTest {
     fun `onTimeout should update destination to Home route`() = testCoroutineRule.runBlockingTest {
         // Act
         viewModel.onTimeout()
+
+        delay(2000L)
 
         // Assert
         val destination = viewModel.destination.value

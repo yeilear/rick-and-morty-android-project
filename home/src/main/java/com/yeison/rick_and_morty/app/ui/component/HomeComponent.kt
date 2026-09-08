@@ -28,7 +28,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.painter.ColorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -131,8 +130,8 @@ private fun CharacterCard(character: ResultsEntity) {
                     .size(Dimens.DIMEN_80)
                     .clip(RoundedCornerShape(DIMEN_8)),
                 contentScale = ContentScale.Crop,
-                placeholder = ColorPainter(MaterialTheme.colorScheme.surface),
-                error = ColorPainter(MaterialTheme.colorScheme.surface)
+                placeholder = painterResource(id = core.drawable.splash),
+                error = painterResource(id = core.drawable.splash)
             )
 
             Spacer(modifier = Modifier.width(Dimens.DIMEN_16))
