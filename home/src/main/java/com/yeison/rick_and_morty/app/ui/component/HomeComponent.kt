@@ -1,6 +1,7 @@
 package com.yeison.rick_and_morty.app.ui.component
 
 import android.content.res.Configuration
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBarsPadding
@@ -28,6 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.painter.ColorPainter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -37,10 +40,13 @@ import com.yeison.core.extensions.ONE
 import com.yeison.core.extensions.TWO
 import com.yeison.core.theme.RickAndMortyTheme
 import com.yeison.core.utils.Dimens
+import com.yeison.core.utils.Dimens.DIMEN_8
+import com.yeison.core.utils.Dimens.DIMEN_80
 import com.yeison.home.R
 import com.yeison.rick_and_morty.app.state.HomeUiState
 import com.yeison.rick_and_morty.app.ui.model.CharacterStatus
 import com.yeison.rick_and_morty.domain.model.ResultsEntity
+import com.yeison.core.R as core
 
 @Composable
 fun HomeComponent(
@@ -75,6 +81,30 @@ private fun CharacterList(characters: List<ResultsEntity>) {
             contentPadding = PaddingValues(Dimens.DIMEN_16),
             verticalArrangement = Arrangement.spacedBy(Dimens.DIMEN_12)
         ) {
+            item {
+                Image(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .heightIn(max = DIMEN_80),
+                    painter = painterResource(id = core.drawable.splash_title),
+                    contentDescription = null
+                )
+            }
+            item {
+                Spacer(modifier = Modifier.width(Dimens.DIMEN_16))
+            }
+            item {
+                Text(
+                    text = stringResource(R.string.home_title),
+                    style = MaterialTheme.typography.headlineMedium,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    modifier = Modifier.padding(bottom = DIMEN_8)
+                )
+            }
+            item {
+                Spacer(modifier = Modifier.width(Dimens.DIMEN_16))
+            }
             items(characters, key = { it.id }) { character ->
                 CharacterCard(character = character)
             }
@@ -99,7 +129,7 @@ private fun CharacterCard(character: ResultsEntity) {
                 contentDescription = character.name,
                 modifier = Modifier
                     .size(Dimens.DIMEN_80)
-                    .clip(RoundedCornerShape(Dimens.DIMEN_8)),
+                    .clip(RoundedCornerShape(DIMEN_8)),
                 contentScale = ContentScale.Crop,
                 placeholder = ColorPainter(MaterialTheme.colorScheme.surface),
                 error = ColorPainter(MaterialTheme.colorScheme.surface)
@@ -130,11 +160,11 @@ private fun StatusLabel(characterStatus: CharacterStatus) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         Box(
             modifier = Modifier
-                .size(Dimens.DIMEN_8)
+                .size(DIMEN_8)
                 .clip(CircleShape)
                 .background(characterStatus.color)
         )
-        Spacer(modifier = Modifier.width(Dimens.DIMEN_8))
+        Spacer(modifier = Modifier.width(DIMEN_8))
         Text(
             text = characterStatus.status.replaceFirstChar { it.uppercase() },
             style = MaterialTheme.typography.bodyMedium,

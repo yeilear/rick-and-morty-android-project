@@ -1,5 +1,5 @@
 <resources>
-    <string name="home_title">Rick and Morty</string>
+    <string name="home_title">Personajes y su estado</string>
     <string name="home_error_message">Ocurrió un error al cargar los personajes. Inténtalo nuevamente.</string>
     <string name="home_retry">Reintentar</string>
     <string name="home_empty">No hay personajes disponibles.</string>
