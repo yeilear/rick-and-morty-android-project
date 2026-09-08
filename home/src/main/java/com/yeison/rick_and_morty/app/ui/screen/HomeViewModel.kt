@@ -1,6 +1,7 @@
 package com.yeison.rick_and_morty.app.ui.screen
 
 import com.yeison.core.base.BaseViewModel
+import com.yeison.core.network.ErrorDomain
 import com.yeison.core.network.ResultDomain
 import com.yeison.home.R
 import com.yeison.rick_and_morty.app.state.HomeUiState
@@ -26,14 +27,16 @@ class HomeViewModel @Inject constructor(
             is ResultDomain.Success -> {
                 _viewState.value = HomeUiState.Success(result.data.results)
             }
-            is ResultDomain.Error -> {
-                _viewState.value = HomeUiState.Error(
-                    when (result.error){
-                        GetCharactersErrorDomain.CharactersNotFoundError -> R.string.home_not_found_error_message
-                        else -> R.string.home_error_message
-                    }
-                )
-            }
+            is ResultDomain.Error -> validateError(result.error)
         }
+    }
+
+    private fun validateError(error: ErrorDomain) {
+        _viewState.value = HomeUiState.Error(
+            when (error){
+                GetCharactersErrorDomain.CharactersNotFoundError -> R.string.home_not_found_error_message
+                else -> R.string.home_error_message
+            }
+        )
     }
 }

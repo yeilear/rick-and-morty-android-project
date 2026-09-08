@@ -30,11 +30,9 @@ import com.yeison.core.theme.RickAndMortyTheme
 import com.yeison.core.utils.Dimens.DIMEN_16
 import com.yeison.core.utils.Dimens.DIMEN_3
 import com.yeison.core.utils.Dimens.DIMEN_32
-import kotlinx.coroutines.delay
 import com.yeison.core.R as core
 
 private const val DURATION_ANIMATION_MILLIS = 800
-private const val DELAY = 2000L
 
 @Composable
 fun SplashComponent(
@@ -47,7 +45,6 @@ fun SplashComponent(
             targetValue = Float.ONE,
             animationSpec = tween(DURATION_ANIMATION_MILLIS, easing = FastOutSlowInEasing)
         )
-        delay(DELAY)
         onTimeout()
     }
 
