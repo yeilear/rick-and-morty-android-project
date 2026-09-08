@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.yeison.core"
+    namespace = "com.yeison.home"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
@@ -37,33 +37,43 @@ android {
     }
 
     buildFeatures {
-        buildConfig = true
+        compose = true
     }
 }
 
 dependencies {
+    implementation(project(":core"))
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.core.ktx)
+
+    // Compose
     implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
-    implementation(libs.androidx.core.ktx)
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+
+    // ViewModel
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+    // Compose Navigation
     implementation(libs.androidx.navigation.compose)
-    implementation(libs.material)
+    implementation(libs.androidx.hilt.navigation.compose)
 
     // Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
-    // Network
-    api(libs.retrofit)
-    api(libs.okhttp)
-    api(libs.logging.interceptor)
-    api(libs.gson)
-    api(libs.retrofit.gson.converter)
+    // Images
+    implementation(libs.coil.compose)
 
-    debugImplementation(libs.androidx.compose.ui.tooling)
-    debugImplementation(libs.androidx.compose.ui.test.manifest)
+    // Test
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockk)
 }
