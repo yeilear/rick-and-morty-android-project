@@ -1,4 +1,4 @@
-package com.yeison.rick_and_morty.ui.screens.splash
+package com.yeison.rick_and_morty.ui.screens
 
 import androidx.lifecycle.viewModelScope
 import com.yeison.core.base.BaseViewModel

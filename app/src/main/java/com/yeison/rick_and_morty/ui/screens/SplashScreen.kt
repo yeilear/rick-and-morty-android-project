@@ -1,4 +1,4 @@
-package com.yeison.rick_and_morty.ui.screens.splash
+package com.yeison.rick_and_morty.ui.screens
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
