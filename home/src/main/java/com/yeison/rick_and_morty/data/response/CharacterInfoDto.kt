@@ -34,14 +34,14 @@ fun CharacterInfoDto.mapToDomain() = CharacterInfoEntity(
     }
 )
 
-fun InfoDto.mapToDomain() = InfoEntity(
+private fun InfoDto.mapToDomain() = InfoEntity(
     count.orDefault(),
     pages.orDefault(),
     next,
     prev
 )
 
-fun ResultsDto.mapToDomain() = ResultsEntity(
+private fun ResultsDto.mapToDomain() = ResultsEntity(
     id.orDefault(),
     name.orDefault(),
     status.orDefault(),
