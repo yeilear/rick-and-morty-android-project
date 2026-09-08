@@ -22,6 +22,7 @@ import com.yeison.rick_and_morty.app.state.HomeUiState
 
 @Composable
 fun ErrorComponent(
+    message: Int,
     onRetry: () -> Unit
 ) {
     Column(
@@ -32,7 +33,7 @@ fun ErrorComponent(
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = stringResource(R.string.home_error_message),
+            text = stringResource(message),
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onSurface
         )
@@ -49,7 +50,7 @@ fun ErrorComponentPreview() {
     RickAndMortyTheme {
         HomeComponent(
             viewState = HomeUiState.Error(
-                message = "Ocurrió un error"
+                message = R.string.home_not_found_error_message
             )
         )
     }
@@ -61,7 +62,7 @@ fun ErrorComponentDarkPreview() {
     RickAndMortyTheme {
         HomeComponent(
             viewState = HomeUiState.Error(
-                message = "Ocurrió un error"
+                message = R.string.home_not_found_error_message
             )
         )
     }

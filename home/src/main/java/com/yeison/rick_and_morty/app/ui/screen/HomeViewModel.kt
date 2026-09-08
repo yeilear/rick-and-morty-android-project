@@ -2,8 +2,9 @@ package com.yeison.rick_and_morty.app.ui.screen
 
 import com.yeison.core.base.BaseViewModel
 import com.yeison.core.network.ResultDomain
-import com.yeison.core.utils.EMPTY_STRING
+import com.yeison.home.R
 import com.yeison.rick_and_morty.app.state.HomeUiState
+import com.yeison.rick_and_morty.domain.errors.GetCharactersErrorDomain
 import com.yeison.rick_and_morty.domain.use_case.HomeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -26,7 +27,12 @@ class HomeViewModel @Inject constructor(
                 _viewState.value = HomeUiState.Success(result.data.results)
             }
             is ResultDomain.Error -> {
-                _viewState.value = HomeUiState.Error(EMPTY_STRING)
+                _viewState.value = HomeUiState.Error(
+                    when (result.error){
+                        GetCharactersErrorDomain.CharactersNotFoundError -> R.string.home_not_found_error_message
+                        else -> R.string.home_error_message
+                    }
+                )
             }
         }
     }

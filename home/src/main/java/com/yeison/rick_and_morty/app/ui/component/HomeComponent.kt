@@ -49,7 +49,7 @@ fun HomeComponent(
 ) {
     when (viewState) {
         HomeUiState.Loading -> LoadingDialogComponent()
-        is HomeUiState.Error -> ErrorComponent(onRetry = onRetry)
+        is HomeUiState.Error -> ErrorComponent(viewState.message, onRetry = onRetry)
         is HomeUiState.Success -> CharacterList(characters = viewState.characters)
     }
 }
@@ -63,7 +63,8 @@ private fun CharacterList(characters: List<ResultsEntity>) {
         ) {
             Text(
                 text = stringResource(R.string.home_empty),
-                style = MaterialTheme.typography.bodyLarge
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.onSurface
             )
         }
     } else {
