@@ -1,12 +1,11 @@
-package com.yeison.rick_and_morty.app.screen
+package com.yeison.rick_and_morty.app.ui.screen
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.yeison.core.components.LoadingDialog
-import com.yeison.rick_and_morty.app.component.HomeComponent
+import com.yeison.rick_and_morty.app.ui.component.HomeComponent
 
 @Composable
 fun HomeScreen(
@@ -18,9 +17,8 @@ fun HomeScreen(
         viewModel.getCharacters()
     }
 
-    LoadingDialog(isLoading = viewState.isLoading)
-
     HomeComponent(
-        viewState = viewState
+        viewState = viewState,
+        onRetry = viewModel::getCharacters
     )
 }

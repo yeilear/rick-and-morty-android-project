@@ -2,6 +2,7 @@ package com.yeison.rick_and_morty.data.response
 
 import com.google.gson.annotations.SerializedName
 import com.yeison.core.extensions.orDefault
+import com.yeison.rick_and_morty.app.ui.model.CharacterStatus
 import com.yeison.rick_and_morty.domain.model.CharacterInfoEntity
 import com.yeison.rick_and_morty.domain.model.InfoEntity
 import com.yeison.rick_and_morty.domain.model.ResultsEntity
@@ -44,6 +45,6 @@ private fun InfoDto.mapToDomain() = InfoEntity(
 private fun ResultsDto.mapToDomain() = ResultsEntity(
     id.orDefault(),
     name.orDefault(),
-    status.orDefault(),
+    CharacterStatus.fromString(status.orDefault()),
     image.orDefault()
 )

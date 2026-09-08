@@ -9,7 +9,7 @@ import androidx.navigation.compose.rememberNavController
 import com.yeison.core.navigation.AppNavHost
 import com.yeison.core.navigation.Routes
 import com.yeison.core.theme.RickAndMortyTheme
-import com.yeison.rick_and_morty.app.screen.HomeScreen
+import com.yeison.rick_and_morty.app.ui.screen.HomeScreen
 import com.yeison.rick_and_morty.ui.screens.splash.SplashScreen
 import dagger.hilt.android.AndroidEntryPoint
 
